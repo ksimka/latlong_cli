@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-	"github.com/bradfitz/latlong"
+	"github.com/ksimka/latlong"
 	"fmt"
 	"strconv"
 )
