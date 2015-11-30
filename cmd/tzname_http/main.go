@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/bradfitz/latlong"
+	"github.com/ksimka/latlong"
 	"fmt"
 	"strconv"
 	"net/http"
+	"os"
 )
 
 func tzname(w http.ResponseWriter, r *http.Request) {
@@ -23,6 +24,11 @@ func tzname(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	if len(os.Args) != 2 {
+		panic("tzname_http [port]")
+	}
+	port := os.Args[1]
+
 	http.HandleFunc("/", tzname)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":" + port, nil)
 }
