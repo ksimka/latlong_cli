@@ -9,6 +9,8 @@ import (
 	"log"
 )
 
+const VERSION = "0.2.0"
+
 func tzname(w http.ResponseWriter, r *http.Request) {
 	lat, err := strconv.ParseFloat(r.URL.Query().Get("lat"), 32)
 	if err != nil {
@@ -28,7 +30,13 @@ func main() {
 	if len(os.Args) != 2 {
 		log.Fatal("tzname_http [port]")
 	}
+	if os.Args[1] == "version" {
+		fmt.Println(VERSION)
+		return
+	}
+
 	port := os.Args[1]
+
 
 	http.HandleFunc("/", tzname)
 	http.ListenAndServe(":" + port, nil)
