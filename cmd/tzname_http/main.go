@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"net/http"
 	"os"
+	"log"
 )
 
 func tzname(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +26,7 @@ func tzname(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	if len(os.Args) != 2 {
-		panic("tzname_http [port]")
+		log.Fatal("tzname_http [port]")
 	}
 	port := os.Args[1]
 
